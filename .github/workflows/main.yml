@@ -21,7 +21,12 @@ jobs:
         run: |
           mvn jacoco:report
           ls -la target
-        
+      - name: Test Report
+        uses: phoenix-actions/test-reporting@v8
+        with:
+          name: JUnit test
+          path: target/site/jacoco/jacoco-resources/jacoco.xml
+          reporter: java-junit
       
       
       
