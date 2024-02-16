@@ -3,6 +3,9 @@ on: [push]
 
 jobs:
   build-backend:
+    defaults:
+      run:
+        working-directory: back
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -12,10 +15,13 @@ jobs:
           java-version: '21'
           cache: 'maven'
       - name: build with maven
+        run: mvn package
+          
+      - name: Generate report
         run: |
-          mvn package
-          ls -la
-        working-directory: back
+          mvn jacoco:report
+          ls -la target
+        
       
       
       
