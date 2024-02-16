@@ -20,7 +20,7 @@ jobs:
       - name: Generate report
         run: |
           mvn jacoco:report
-          ls -la target
+          ls -la target/site/jacoco
       - name: Test Report
         uses: phoenix-actions/test-reporting@v8
         with:
