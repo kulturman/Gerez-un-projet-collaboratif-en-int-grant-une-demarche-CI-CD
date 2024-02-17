@@ -28,4 +28,10 @@ jobs:
           coverage_results_path: ${{ github.workspace }}/back/target/site/jacoco/jacoco.xml
           coverage_report_name: Bobapp test coverage
           coverage_report_title: Bobapp test coverage
+          
+      - name: Build and analyze
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=kulturman_Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
       
