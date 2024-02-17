@@ -7,7 +7,7 @@ jobs:
     steps:
       - uses: actions/setup-node@v3
       - run: npm i -g @angular/cli
-      - run: npm i --cache .npm
+      - run: npm i
         working-directory: front
       - run: ng test --no-watch --code-coverage
         working-directory: front
