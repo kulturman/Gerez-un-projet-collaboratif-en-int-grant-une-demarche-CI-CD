@@ -20,6 +20,28 @@ jobs:
         with:
           name: bobapp-backend-artifact
           path: back/target
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bobapp-backend-artifact
+          path: target
+
+      - name: Generate report
+        run: |
+          mvn jacoco:report
+          ls -la target/site/jacoco
+
+      - name: Backend code coverage
+        uses: PavanMudigonda/jacoco-reporter@v4.9
+        with:
+          coverage_results_path: ${{ github.workspace }}/back/target/site/jacoco/jacoco.xml
+          coverage_report_name: Bobapp test coverage
+          coverage_report_title: Bobapp test coverage
+
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
   push-backend:
     defaults:
