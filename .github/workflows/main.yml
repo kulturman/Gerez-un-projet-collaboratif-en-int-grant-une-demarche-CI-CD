@@ -25,7 +25,7 @@ jobs:
       - name: Backend code coverage
         uses: PavanMudigonda/jacoco-reporter@v4.9
         with:
-          coverage_results_path: target/site/jacoco/jacoco.xml
+          coverage_results_path: ${{ github.workspace }}/back/target/site/jacoco/jacoco.xml
           coverage_report_name: Bobapp test coverage
           coverage_report_title: Bobapp test coverage
       
