@@ -44,5 +44,5 @@ jobs:
           context: ./front
           file: ./front/Dockerfile
           push: true
-          tags: kulturman/bobapp-frontend:${{ github.ref }}
+          tags: kulturman/bobapp-frontend:$GITHUB_SHA
         
