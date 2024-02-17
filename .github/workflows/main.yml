@@ -37,11 +37,7 @@ jobs:
           coverage_results_path: ${{ github.workspace }}/back/target/site/jacoco/jacoco.xml
           coverage_report_name: Bobapp test coverage
           coverage_report_title: Bobapp test coverage
-  
-  sonarqube:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
+          
       - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
