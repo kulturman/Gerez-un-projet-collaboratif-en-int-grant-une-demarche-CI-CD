@@ -30,6 +30,12 @@ jobs:
           mvn jacoco:report
           ls -la target/site/jacoco
 
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        env:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: kulturman/Gerez-un-projet-collaboratif-en-int-grant-une-demarche-CI-CD
+
       - name: Backend code coverage
         uses: PavanMudigonda/jacoco-reporter@v4.9
         with:
