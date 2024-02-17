@@ -4,12 +4,12 @@ on: [push]
 jobs:
   test-frontend:
     defaults:
-      run:
-        working-directory: front
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v3
       - run: npm i -g @angular/cli
       - run: npm i --cache .npm
+        working-directory: front
       - run: ng test --no-watch --code-coverage
+        working-directory: front
       
